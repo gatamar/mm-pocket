@@ -16,12 +16,13 @@ struct Block: Hashable, Identifiable {
     let id: BlockID
     let center: CGPoint
     let color: Color
-    let text: String = "some random string"
+    let text: String
     static let radius: Double = 20
     
-    init(id: BlockID = UUID(), center: CGPoint, color: Color = .blue) {
+    init(id: BlockID = UUID(), center: CGPoint, text: String, color: Color = .blue) {
         self.id = id
         self.center = center
+        self.text = text
         self.color = color
     }
 }

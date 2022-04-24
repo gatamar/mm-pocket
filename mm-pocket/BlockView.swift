@@ -15,6 +15,7 @@ struct BlockView: View {
     
     var body: some View {
         TextEditor(text: $text)
+            .disabled(true)
             //.background(Color.red) // block.color
             .cornerRadius(3.0)
             .colorMultiply(block.color)

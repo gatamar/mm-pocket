@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-func modelBlocks() -> [Block] {
-    return [
-        Block(id: UUID(), center: .zero, color: .blue),
-        Block(id: UUID(), center: .zero, color: .red),
-        Block(id: UUID(), center: .zero, color: .yellow),
-        Block(id: UUID(), center: .zero, color: .yellow)
-    ]
-}
-
 struct ContentView: View {
     @State var blocks: [Block] = modelBlocks()
     
@@ -26,15 +17,23 @@ struct ContentView: View {
     @Namespace var animation
     
     var body: some View {
-        StaggeredGrid(columns: columns,
-                      list: blocks,
-                      content: { block in
+        VStack {
+            StaggeredGrid(columns: columns,
+                          showsIndicators: true,
+                          list: blocks,
+                          content: { block in
+                
+                // Post Card View...
+                BlockView(block: block)
+                    .matchedGeometryEffect(id: block.id, in: animation)
+            })
+            .frame(height: 700, alignment: .top)
+            .padding(.horizontal)
+            .background(Color.gray)
             
-            // Post Card View...
-            BlockView(block: block)
-                .matchedGeometryEffect(id: block.id, in: animation)
-        })
-        .padding(.horizontal)
+            Rectangle().fill(Color.green)
+        }
+        
     }
 }
 
