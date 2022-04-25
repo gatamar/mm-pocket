@@ -11,16 +11,16 @@ import SwiftUI
 
 struct BlockView: View {
     @State var block: Block
-    @State var text: String = ""
+    //@State var text: String = ""
     
     var body: some View {
-        TextEditor(text: $text)
-            .disabled(true)
+        Text(block.text)
+//            .disabled(true)
             //.background(Color.red) // block.color
             .cornerRadius(3.0)
             .colorMultiply(block.color)
-            .onAppear(perform: {
-                text = block.text
-            })
+//            .onAppear(perform: {
+//                text = block.text
+//            })
     }
 }
